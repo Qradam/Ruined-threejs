@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Ruin[ed]</title>
+</head>
+<body>
+    <div class="flex md:hidden w-full h-screen bg-black"></div>
+    <section class="w-full h-screen bg-black flex items-center justify-center">
+        <div class="w-full h-screen flex items-center justify-center blurbg">
+        <div class="menu flex items-center justify-between gap-24">
+            <div class="logo">
+                <img src="/assets/logo-17f6204e.png" width="400" alt="">
+            </div>
+            <div class="buttons flex flex-col gap-5">
+                <a href="game.html">
+                    <div class="button px-48 text-center transition ease-in-out duration-300 py-4">
+                        <svg width="25" height="42" viewBox="0 0 25 42" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="33" width="8" height="9"/>
+                            <rect y="25" width="8" height="8"/>
+                            <rect y="17" width="8" height="8"/>
+                            <rect y="8" width="8" height="9"/>
+                            <rect x="8" y="25" width="9" height="8"/>
+                            <rect x="8" y="17" width="9" height="8"/>
+                            <rect x="8" y="8" width="9" height="9"/>
+                            <rect x="17" y="17" width="8" height="8"/>
+                            <rect width="8" height="8"/>
+                        </svg>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    </section>
+</body>
+</html>
+<script>
+
+window.addEventListener('beforeunload', function (e) {
+    localStorage.setItem("screen", 0);
+  
+  })
+
+</script>
+
+
+<style>
+    *{
+        overflow:  hidden;
+    }
+
+.button svg rect {
+        transition: fill 0.3s ease;
+        fill: #4B4848;
+    }
+
+    .button:hover svg rect {
+        fill: rgb(113, 236, 113);
+    }
+
+@font-face {
+  font-family: 'monobloco'; 
+  src: url('/assets/monobloco-dc0c6ab3.otf') format('opentype'); 
+
+}
+
+    .button{
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAUCAMAAABMHminAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAB4UExURS0tKzo6OVlZWPLy8e7u7e3t7Onp6Obm5eXl5PHx8OPj4/Hx8fDw8PDw7/T09O3t7e/v7/Pz8+Li4fX19PT08+Hh4ejo5+rq6ezs6+vr6+Xl5ezs7Pb29fX19eHh4Pj49+fn5+jo6MTEw9HR0Pf39+np6fj4+OTk47yeRBMAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPBSURBVEhLjZWNdts2DIUjgXKMEqCkkrPVSVrWJN3e/w33QXaytKenGyjLFH9wiQvy8uGh6yUNp8ezfsr6KCKWXIs/qurgPo7O2zSL06CWBjcznUQ85/loCvtsqnOdG7P1NxU72+VyuV6vy/kxd93Dw0Ovy/L4RSSfme94xFxaNsEb/lXwpOqiOeoMwbW0mc+cK+VmvysNIq3MbbDPeWJh1+V6kukcIHld5u1iuAv/oLht1liZ7GqSswhz80yXgVKAi8Co6uwzH84f7yjqBEbM8JE/mdri1y9/LAFi17VKvsRyj1Cq1woQA+dWaoMGiYfVSwN1YyU0ECVQEZy2mRLRZUB44NerybAwWq4XGQHprtMq6jF8qgZGjKlWay1TbXMtEPDUmrdG02FecwMcdozHJ2+TTW0qQSXRVLcxaE5qa5rlPAUIeMF5Pqi6RRKOKtzEp+muhFr22g7oo7OFla3WZhbt2nbdM3PKnhL9iRS2i6zzevqzD5DOuq7vtekUPj9aqvstJiy6NrzerVSjr2ihdhQrUnUeJ9c1+IrE74OOMn69gXTd8zMoECqHr4/GjHvtFuHNAC4R1/6hKDutURjmDgfkLFxLH4kH5Tml1Mf2+gHhl0Yg31niJ02ecp1qgJh33ctL4LyDvHQk/+cgQ6rDvfpfxmlsY92nIQ6tdy8pPb9h3BADw3/tLRZ7mN4TxZpvFSymlpokbdvGQPjqIegNpP8SOLKo/piRA3I8qv/LhlTm2oZ9GUA36/tnMG6yEmctss5W5Tjex78bsO8B/JTNj43oUZrZk7gZque+77rprl2tcBJDV2J76XbslY/m5c3Vu8Pv4PB3r+0cPsTBY757Ow1JkwSIDK2e1LZQBHl93XTfD4xIEUatsFfuft9fb7+wf89vZB5Nm46DPWakUn0MEEQtoTOZWFDWqeVZauCEwqBlselLWeo3r0t83Cyy5xGC13154xgFfW3ojLP80Mt8BTClQ1YQURC4IQwhNwRYct0yedpEK+Gx5w59uXvHyTp6XXHKZ+KlyIqxZ9OurYUIZ8/RHMyRgTVAGumSQUOBwCPeNluOY8VWCJknX4g+GhU3gR7sxFFD1cYBOSSVdjBm46qyIZtwkVEVLp806rLeZIU56VRxmOGIIu5ibd/jpmvcJ3NcWgcEYol3hDf0nitrA5Vcgkp/Gir3jJB6mcNP1a++5tMhKwgkbCXfL8QKEEoXt5Mgs2Snvra/6lNBcpn8N92ZiOLeCuewyR1iUOGIuOIyofJKJJBmXFHflmXpu4d/AGHAbDpNL8LkAAAAAElFTkSuQmCC');
+        background-size: cover;
+    }
+
+    *{
+        font-family: monobloco;
+    }
+    section{
+        background-image: url('/assets/background-97f34764.gif');
+        background-size: cover;
+    }
+
+    section .blurbg{
+        backdrop-filter: blur(6px);
+    }
+</style>

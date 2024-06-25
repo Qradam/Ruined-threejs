@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruin[ed]</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <audio id="background-music">
+    <source src="/assets/music/game.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div id="keybinds" class="absolute w-full h-screen flex items-center justify-center" onclick="HideKeybinds()"><img id="keybindsimg" src="assets/keybinds.png" width="1000" alt=""></div>
+  <div id="options" class="z-10 absoltue w-full h-screen bg-gray-800 flex items-center justify-center gap-12">
+    <div class="bg-gray-700 w-32 h-32 cursor-pointer flex items-center justify-center" onclick="GameSave()">
+      <svg width="90" height="90" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.5 5.75H51.75V11.5H11.5V57.5H17.25V40.25H51.75V57.5H57.5V17.25H63.25V63.25H5.75V5.75H11.5ZM23 57.5H46V46H23V57.5ZM57.5 17.25H51.75V11.5H57.5V17.25ZM17.25 17.25H43.125V28.75H17.25V17.25Z" fill="white"/>
+        </svg>
+        </div>
+        <div class="bg-gray-700 w-32 h-32 cursor-pointer flex items-center justify-center" onclick="Keybinds()">
+          <svg width="73" height="55" viewBox="0 0 73 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 0H44V20H24V0H28V15.9714H31.9714V8H36V15.9714H40V0Z" fill="white"/>
+            <path d="M0 35H20V55H16V50.9772H4V55H0V35ZM16 46.9829V38.9943H4V46.9829H16Z" fill="white"/>
+            <path d="M47 39H31V43H47V55H27V51H43V47H27V35H47V39Z" fill="white"/>
+            <path d="M56.9714 50.9714H68.9714V55H53V35H68.9714V38.9714H56.9714V50.9714ZM68.9714 38.9714H73V50.9714H68.9714V38.9714Z" fill="white"/>
+            </svg>
+            
+            </div>
+            <div class="bg-gray-700 w-32 h-32 cursor-pointer flex items-center justify-center" onclick="Lang('english')">
+              <img id="language" src="assets/english.png" alt="">
+                
+                </div>
+                <div class="bg-gray-700 w-32 h-32 cursor-pointer flex items-center justify-center" onclick="Lang('slovak')">
+                  <img id="language" src="assets/slovak.png" alt="">
+                    
+                    </div>
+                <div class="bg-gray-700 w-32 h-32 cursor-pointer flex items-center justify-center" onclick="CloseSettings()">
+                    <div class="gamebutton flex items-center justify-center text-white text-7xl">✔</div>
+                    </div>
+
+
+
+  </div>
+  <div id="screen" class="z-10 absoltue w-full h-screen bg-gray-800 flex items-center justify-center flex-col gap-12">
+    <div id="newgame" class="bg-gray-700 py-6 px-16 cursor-pointer text-white text-xl gamebutton" onclick="NewGame()">NEW GAME</div>
+    <div id="loadgame" class="bg-gray-700 py-6 px-14 cursor-pointer text-white text-xl gamebutton" onclick="LoadGame()">LOAD GAME</div>
+
+  </div>
+  <div id="select" class="z-10 absoltue w-full h-screen bg-gray-800 flex items-center justify-center flex-col gap-12">
+    <h1 id="selectchar" class="text-white text-4xl">SELECT YOUR CHARACTER</h1>
+    <div class="flex justify-between items-center gap-24">
+      <img src="assets/warrior.png" class="cursor-pointer" onclick="Character('assets/warrior.glb')" alt="" width="200">
+      <img src="assets/warriorw.png" class="cursor-pointer" onclick="Character('assets/warriorw.glb')" alt="" width="200">
+    </div>
+  </div>
+  <div class="bars">
+    <div class="heart">
+      <div></div>
+      <h1 id="heart" class="text-2xl"></h1>
+    </div>
+    <div class="shield ">
+      <div></div>
+      <h1 id="shield" class="text-2xl"></h1>
+    </div>
+    <div class="money">
+      <div></div>
+      <h1 id="money" class="text-2xl">0</h1>
+    </div>
+    <div class="frame">
+      <div class="f1 w-16 h-16 flex items-center justify-center"></div>
+      <div class="f2 w-16 h-16 flex items-center justify-center"></div>
+      <div class="f3 w-16 h-16 flex items-center justify-center"></div>
+      <div class="f4 w-16 h-16 flex items-center justify-center"></div>
+    </div>
+  </div>
+    <div id="gameover" class="bg-dark-400">
+        <h1 class="gameover">GAME OVER</h1>
+        <a href="/" id="again">play again?</a>
+      </div>
+      <div id="loot" class="gap-2">
+        <div class="img w-48 h-48"></div>
+        <div id="popup" class="textbox w-[44rem] h-[9.5rem] gap-6 flex items-center justify-center text-[#FFE7B6]">
+          <div id="lootimg" class=" w-24 h-24"></div>
+          <div>
+            <div id="lootname" class="text-[1em]">TEST</div>
+            <div id="loottext" class="text-[0.3em] break-all w-80">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil fugit quasi quibusdam perspiciatis soluta!</div>
+        </div>
+        </div>
+      </div>
+      <div id="shop" class="text-white">
+        <h1 class="text-center font-bold text-2xl h-32">POTION SHOP</h1>
+        <div class="items flex h-48 items-center justify-center gap-6">
+          <div class="flex flex-col items-center justify-center gap-4 w-24 h-80"><div class="green cursor-pointer" onclick="Buy('green')"></div><h2 id="p1" class="text-center h-7">Life Potion</h2> <h3 class="text-center h-7">4g</h3><h3 id="p1a" class="text-center text-[0.8rem] h-7">+1 hp</h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-24 h-80"><div class="yellow cursor-pointer" onclick="Buy('yellow')"></div><h2 id="p2" class="text-center h-7">Kindlebrew</h2> <h3 class="text-center h-7">4g</h3><h3 id="p2a" class="text-center text-[0.8rem] h-7">+ movement speed</h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-24 h-80"><div class="orange cursor-pointer" onclick="Buy('orange')"></div><h2 id="p3" class="text-center h-7">Protectorian Elixir</h2> <h3 class="text-center h-7">4g</h3><h3 id="p3a" class="text-center text-[0.8rem] h-7">+ untargetability (5s)</h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-24 h-80"><div class="brown cursor-pointer" onclick="Buy('brown')"></div><h2 id="p4" class="text-center h-7">Hazardbane Concoction</h2> <h3 class="text-center h-7">2g</h3><h3 id="p4a" class="text-center text-[0.8rem] h-7">???</h3></div>
+        </div>
+        <a onclick="Close('shop')" class="font-bold h-32 flex cursor-pointer items-center justify-center"><svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.4 37H15V32.8H19.4V37ZM23.8 32.8H19.4V28.6H23.8V32.8ZM28.2 28.6H23.8V24.4H28.2V28.6ZM19.4 20.2H15V16H19.4V20.2ZM23.8 24.4H19.4V20.2H23.8V24.4ZM32.6 32.8H28.2V28.6H32.6V32.8ZM37 37H32.6V32.8H37V37ZM32.6 24.4H28.2V20.2H32.6V24.4ZM37 20.2H32.6V16H37V20.2Z" fill="white"/>
+          <rect x="3" y="3" width="47" height="47" stroke="white" stroke-width="6"/>
+          </svg>
+          </a>
+      </div>
+      <div id="gunshop" class="text-white">
+        <h1 class="text-center font-bold text-2xl h-32">GUN SHOP</h1>
+        <div class="items flex h-48 items-center justify-center gap-6">
+          <div class="flex flex-col items-center justify-center gap-4 w-24 h-80"><div class="shotgun cursor-pointer" onclick="Buy('shotgun')"></div><h2 class="text-center h-7">Shotgun</h2> <h3 class="text-center h-7">6g</h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-24 h-80"><div class="dual cursor-pointer" onclick="Buy('dual')"></div><h2 class="text-center h-7">Dual Berettas</h2> <h3 class="text-center h-7">6g</h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-24 h-80"><div class="grenade cursor-pointer" onclick="Buy('grenade')"></div><h2 class="text-center h-7">Grenade Launcher</h2> <h3 class="text-center h-7">16g</h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-24 h-80"><div class="machine cursor-pointer" onclick="Buy('machine')"></div><h2 class="text-center h-7">Machine Gun</h2> <h3 class="text-center h-7">14g</h3></div>
+        </div>
+        <a onclick="Close('gunshop')" class="font-bold cursor-pointer h-32 flex items-center justify-center"><svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.4 37H15V32.8H19.4V37ZM23.8 32.8H19.4V28.6H23.8V32.8ZM28.2 28.6H23.8V24.4H28.2V28.6ZM19.4 20.2H15V16H19.4V20.2ZM23.8 24.4H19.4V20.2H23.8V24.4ZM32.6 32.8H28.2V28.6H32.6V32.8ZM37 37H32.6V32.8H37V37ZM32.6 24.4H28.2V20.2H32.6V24.4ZM37 20.2H32.6V16H37V20.2Z" fill="white"/>
+          <rect x="3" y="3" width="47" height="47" stroke="white" stroke-width="6"/>
+          </svg>
+          </a>
+      </div>
+      
+      <div id="knifeshop" class="text-white">
+        <h1 class="text-center font-bold text-2xl h-32">KNIFE SHOP</h1>
+        <div class="items flex h-48 items-center justify-center gap-4">
+          <div class="flex flex-col items-center justify-center gap-4 w-36 h-80"><div class="u1 w-16 h-16 cursor-pointer" onclick="Buy('u1')"></div><h2 id="k1" class="text-center h-7">Double the Bullets</h2> <h3 class="text-center h-7 flex gap-2">4 <img src="/assets/hp.png" alt=""></h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-36 h-80"><div class="u2 w-16 h-16 cursor-pointer" onclick="Buy('u2')"></div><h2 id="k2" class="text-center h-7">Bigger Bullets</h2> <h3 class="text-center h-7 flex gap-2">2 <img src="/assets/hp.png" alt=""></h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-36 h-80"><div class="u3 w-16 h-16 cursor-pointer" onclick="Buy('u3')"></div><h2 id="k3" class="text-center h-7">SPEED!</h2> <h3 class="text-center h-7 flex gap-2">2 <img src="/assets/hp.png" alt=""></h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-36 h-80"><div class="u4 w-16 h-16 cursor-pointer" onclick="Buy('u4')"></div><h2 id="k4" class="text-center h-7">Slow Enemies</h2> <h3 class="text-center h-7 flex gap-2">4 <img src="/assets/hp.png" alt=""></h3></div>
+          <div class="flex flex-col items-center justify-center gap-4 w-36 h-80"><div class="u5 w-16 h-16 cursor-pointer" onclick="Buy('u5')"></div><h2 id="k5" class="text-center h-7">Crab Companion</h2> <h3 class="text-center h-7 flex gap-2">6 <img src="/assets/hp.png" alt=""></h3></div>
+        </div>
+        <a onclick="Close('knifeshop')" class="font-bold h-32 cursor-pointer flex items-center justify-center"><svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.4 37H15V32.8H19.4V37ZM23.8 32.8H19.4V28.6H23.8V32.8ZM28.2 28.6H23.8V24.4H28.2V28.6ZM19.4 20.2H15V16H19.4V20.2ZM23.8 24.4H19.4V20.2H23.8V24.4ZM32.6 32.8H28.2V28.6H32.6V32.8ZM37 37H32.6V32.8H37V37ZM32.6 24.4H28.2V20.2H32.6V24.4ZM37 20.2H32.6V16H37V20.2Z" fill="white"/>
+          <rect x="3" y="3" width="47" height="47" stroke="white" stroke-width="6"/>
+          </svg>
+          </a>
+      </div>
+    <div id = "enemies" class="enemies left-20 bottom-1 absolute flex bg-white">
+
+      </div>
+      
+    </div>
+    <div class="settings absolute right-1 bottom-1 w-20 h-20" onclick="Settings()"></div>
+    <div id="bullets" class="bullets absolute right-1 flex flex-col gap-2">
+    </div>
+    
+</body>
+<script>
+
+    const audio = document.getElementById('background-music');
+    audio.muted = false;
+    audio.volume = 0.2;
+
+
+</script>
+<script type="module" src="./main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tweenjs@1.0.2/lib/tweenjs.min.js"></script>
+</html>
+<style>
+
+@font-face {
+  font-family: 'monobloco'; 
+  src: url('/assets/monobloco.otf') format('opentype'); 
+
+}
+
+
+    *{
+        margin: 0;
+        -webkit-user-select: none;   
+        -ms-user-select: none;   
+        user-select: none;
+        overflow: hidden;
+    }
+
+    .gamebutton, #select h1{
+      font-family: 'monobloco';
+      
+    }
+
+    #options{
+      display: none;
+    }
+
+    #keybinds{
+      display: none;
+    }
+
+
+    .hp {
+    display: grid;
+    grid-template-rows: 1fr; 
+    grid-auto-flow: column; 
+    }
+
+    .one {
+    background-color: #bf1e1e; 
+    outline: rgb(253, 90, 90) 2px solid;
+    text-align: center;
+    }
+
+    .settings{
+      background-image: url('/assets/settings.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .bars{
+      font-family: 'monobloco';
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      position: absolute;
+    }
+
+    .heart, .shield, .money{
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+
+    .shield div{
+      width: 10rem;
+      height: 6rem;
+      background-image: url("/assets/shield.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .f1{
+      background-image: url("/assets/frame1.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    .f2{
+      background-image: url("/assets/frame2.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    .f3{
+      background-image: url("/assets/frame3.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    .f4{
+      background-image: url("/assets/frame4.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .u1{
+      background-image: url("/assets/doubleammo.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+
+    }
+    .u2{
+      background-image: url("/assets/bigammo.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+
+    }
+    .u3{
+      background-image: url("/assets/speed.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+
+    }
+    .u4{
+      background-image: url("/assets/slow.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+
+    }
+    .u5{
+      background-image: url("/assets/pet.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+
+    }
+
+    .green{
+      background-image: url("/assets/green.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 4rem;
+      height: 3rem;
+    }
+
+    .yellow{
+      background-image: url("/assets/yellow.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 4rem;
+      height: 3rem;
+    }
+
+    .brown{
+      background-image: url("/assets/brown.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 4rem;
+      height: 3rem;
+    }
+
+    .orange{
+      background-image: url("/assets/orange.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 4rem;
+      height: 3rem;
+    }
+
+    .grenade{
+      background-image: url("/assets/grenade.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 5rem;
+      height: 4rem;
+    }
+
+    .dual{
+      background-image: url("/assets/dual.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 5rem;
+      height: 4rem;
+    }
+
+    .machine{
+      background-image: url("/assets/machine.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 5rem;
+      height: 4rem;
+    }
+
+    .shotgun{
+      background-image: url("/assets/shotgun.png"); 
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 5rem;
+      height: 4rem;
+    }
+
+    .heart div{
+      width: 9.5rem;
+      height: 6rem;
+      background-image: url("/assets/hp.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .money div{
+      width: 10rem;
+      height: 5.5rem;
+      background-image: url("/assets/coin.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    #bullet{
+      background-image: url('/assets/bullet.png');
+      width: 6rem;
+      height: 2rem;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .gameover{
+      width: 100%;
+      font-family: 'monobloco';
+      color: rgb(255, 255, 255);
+      text-align: center;
+      
+    }
+    #gameover{
+    font-family: 'monobloco';
+    color: #bf1e1e;
+     position: absolute;
+     width: 30rem;
+     height: 10rem ;
+     top: 35%;
+     left: 35%;
+     background-color: rgb(44, 46, 46);
+     display: none;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+    }
+
+    .loot{
+      width: 100%;
+      
+      color: red;
+      text-align: center;
+      
+    }
+    #loot{
+      position: absolute;
+     width: 100%;
+     height: 100vh;
+     
+     display: none;
+     justify-content:end;
+     align-items: center;
+     flex-direction: column;
+    }
+
+    .img{
+      background-image: url('/assets/chest.png');
+      background-size: cover;
+    }
+
+    #lootimg{
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .textbox{
+      font-family: 'monobloco';
+      font-size: 2em;
+      background-image: url('/assets/message.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    #shop,#gunshop,#knifeshop{
+     position: absolute;
+     width: 30rem;
+     height: 30rem ;
+     top: 15%;
+     left: 35%;
+     background-color: rgb(44, 46, 46);
+     display: none;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+    }
+
+    #knifeshop{
+      width: 50rem;
+      left: 25%;
+    }
+</style>
+
+

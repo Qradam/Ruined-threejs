@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Ruin[ed]</title>
+</head>
+<body>
+    <div class="flex md:hidden w-full h-screen bg-black"></div>
+    <section class="w-full h-screen bg-black flex items-center justify-center">
+        <div class="w-full h-screen flex items-center justify-center blurbg">
+        <div class="menu flex items-center justify-between gap-24">
+            <div class="logo">
+                <img src="assets/logo.png" width="400" alt="">
+            </div>
+            <div class="buttons flex flex-col gap-5">
+                <a href="game.html">
+                    <div class="button px-48 text-center transition ease-in-out duration-300 py-4">
+                        <svg width="25" height="42" viewBox="0 0 25 42" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="33" width="8" height="9"/>
+                            <rect y="25" width="8" height="8"/>
+                            <rect y="17" width="8" height="8"/>
+                            <rect y="8" width="8" height="9"/>
+                            <rect x="8" y="25" width="9" height="8"/>
+                            <rect x="8" y="17" width="9" height="8"/>
+                            <rect x="8" y="8" width="9" height="9"/>
+                            <rect x="17" y="17" width="8" height="8"/>
+                            <rect width="8" height="8"/>
+                        </svg>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    </section>
+</body>
+</html>
+<script>
+
+window.addEventListener('beforeunload', function (e) {
+    localStorage.setItem("screen", 0);
+  
+  })
+
+</script>
+
+
+<style>
+    *{
+        overflow:  hidden;
+    }
+
+.button svg rect {
+        transition: fill 0.3s ease;
+        fill: #4B4848;
+    }
+
+    .button:hover svg rect {
+        fill: rgb(113, 236, 113);
+    }
+
+@font-face {
+  font-family: 'monobloco'; 
+  src: url('/assets/monobloco.otf') format('opentype'); 
+
+}
+
+    .button{
+        background-image: url('/assets/button.png');
+        background-size: cover;
+    }
+
+    *{
+        font-family: monobloco;
+    }
+    section{
+        background-image: url('/assets/background.gif');
+        background-size: cover;
+    }
+
+    section .blurbg{
+        backdrop-filter: blur(6px);
+    }
+</style>
