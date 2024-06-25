@@ -10,4 +10,4 @@
 
 <h2>Logo:</h2>
 
-<img src="https://ruined.pages.dev/assets/logo-17f6204e.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://ruined.pages.dev/assets/logo-17f6204e.png" alt="project-screenshot" width="400" height="550/">
